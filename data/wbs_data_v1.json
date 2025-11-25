@@ -1,0 +1,274 @@
+{
+    "_comments": {
+        "Allowed fields for each task": [
+            "start_date (YYYY-MM-DD)",
+            "end_date (YYYY-MM-DD)",
+            "resources (list of people names)",
+            "costs (numeric value)"
+        ]
+    },
+    "title": "Stuurloos naar de toekomst v1",
+    "team": [
+        "Alexander",
+        "Ewann",
+        "Antonio",
+        "Jona",
+        "Sander",
+        "Ennis"
+    ],
+    "description": "Project om één representatieve productielijn te digitaliseren en te automatiseren als pilot, met inzet van robotica (AMR's), IoT en een Digital Twin voor simulatie en validatie. Doel is een stabiele, semi-autonome pilotlijn met meetbare productiviteits- en ROI-verbeteringen.",
+    "detailed_explanation": "Dit project (\"Stuurloos naar de toekomst\") richt zich op het ontwerpen, bouwen en valideren van een semi-autonome pilotproductielijn. Het primaire doel is het demonstreren van productiviteitsverbetering, betrouwbaarheid en terugverdienbaarheid (ROI) door inzet van AMR's, sensornetwerken (IoT), en simulatie via een Digital Twin. De aanpak bestaat uit vijf fasen: initiatie & analyse, ontwerp & simulatie, prototypebouw & tests, gefaseerde integratie in een pilotlijn en evaluatie & rapportage. Elke subtake heeft een geraamde kost, duidelijke acceptatiecriteria en opleveringsdocumenten. De kosten in dit bestand zijn schattingen voor planning en vergelijkingen; gedetailleerde kostencalculaties worden gemaakt tijdens Initiatie en Analyse.",
+    "project_scope": {
+        "in_scope": [
+            "Analyse van bestaande productielijnen",
+            "Ontwerp van een semi-autonome pilotlijn",
+            "Simulatie met digitale twin technologie",
+            "Integratie van ML/AI, AMR's en IoT-systemen",
+            "Opleiding van operatoren",
+            "Evaluatie en ROI-analyse"
+        ],
+        "out_of_scope": [
+            "Volledige automatisering van alle productielijnen",
+            "Commerciële uitrol naar andere vestigingen buiten de pilot"
+        ]
+    },
+    "deliverables": [
+        "Analyseverslag met goedgekeurde requirements",
+        "Technisch Ontwerpdocument",
+        "Simulatieverslag (Digital Twin resultaten en scenario's)",
+        "Werkend prototype (pilotlijn) in testzone",
+        "Testverslagen - unit tests en benchmark rapporten",
+        "Opleidingsrapport voor eindgebruikers (operatoren)",
+        "Operationele pilotlijn met integratietests",
+        "Overdrachtsdocumentatie en eindrapport met aanbevelingen voor verdere uitrol"
+    ],
+    "acceptance_criteria": [
+        "De pilot functioneert autonoom en stabiel (24/7 beschikbaarheid afhankelijk van afspraken)",
+        "Productiviteit stijgt minimaal 15%-20% ten opzichte van de baseline",
+        "ROI is positief binnen 2 jaar na volledige ingebruikname van de pilot",
+        "Operatoren kunnen vlot met het systeem werken en hebben de benodigde training afgerond"
+    ],
+    "timelines_estimate": {
+        "Kleine KMO": "± 3 maanden",
+        "Middelgrote KMO": "± 6 maanden",
+        "Grote KMO": "± 8-10 maanden"
+    },
+    "phases": [
+        {
+            "id": 1,
+            "title": "Initiatie en Analyse",
+            "activities": [
+                "Selectie van representatieve productielijn",
+                "In kaart brengen van workflows en knelpunten",
+                "Definiëren van automatiseringsdoelen met stakeholders",
+                "Opstellen van risico- en kostenanalyse"
+            ],
+            "notes": "Betrek operatoren en technische dienst; resultaat = Analyseverslag en goedgekeurde requirements"
+        },
+        {
+            "id": 2,
+            "title": "Ontwerp, Planning en Simulatie",
+            "activities": [
+                "Technisch concept en lay-out (robotica, sensoren, netwerk)",
+                "Opzetten Digital Twin en 3D-simulaties",
+                "Werkplanning maken om productiecontinuïteit te waarborgen"
+            ],
+            "notes": "Doel = Technisch Ontwerpdocument en Simulatieverslag"
+        },
+        {
+            "id": 3,
+            "title": "Prototype",
+            "activities": [
+                "Bouwen van prototype in een testzone",
+                "Uitvoeren van functionele tests (unit tests)",
+                "Veiligheidsevaluaties en performance benchmarks",
+                "Operatortraining en feedbackcycli"
+            ],
+            "notes": "Iteratief met fase 2; oplevering = werkend prototype + testverslagen + opleidingsrapport"
+        },
+        {
+            "id": 4,
+            "title": "Implementatie Pilotlijn",
+            "activities": [
+                "Gefaseerde integratie op de gekozen productielijn buiten piekuren",
+                "Integratie- en systeemtests met bestaande systemen (integration tests)",
+                "Beheer van change management en operationele overdracht"
+            ],
+            "notes": "Stuurgroep-go/no-go beslissingen; iteratief proces mogelijk tussen fases 2-4"
+        },
+        {
+            "id": 5,
+            "title": "Evaluatie en Reporting",
+            "activities": [
+                "Vergelijking van resultaten met doelstellingen",
+                "ROI- en haalbaarheidsanalyse voor opschaling",
+                "Opstellen van eindrapport en aanbevelingen",
+                "Presentatie aan stuurgroep en formele projectafsluiting"
+            ],
+            "notes": "Einddeliverable = eindrapport + overdrachtsdocumentatie"
+        }
+    ],
+    "wbs": {
+        "Project Initiation & Analysis": {
+            "Kick-off & Project Setup": {
+                "start_date": "2024-06-01",
+                "end_date": "2024-06-05",
+                "resources": ["Alexander", "Ennis"],
+                "costs": 10000,
+                "detailed_description": "Projectopstart: stakeholder alignment, project governance, communicatieplan, aanstellen stuurgroep en technische leads. Inclusief voorbereidende licenties en aanschaf van eerste tooling/meetapparatuur."
+            },
+            "Process & Workflow Analysis": {
+                "start_date": "2024-06-06",
+                "end_date": "2024-06-10",
+                "resources": ["Ewann", "Jona"],
+                "costs": 5000,
+                "detailed_description": "Diepgaande analyse van de geselecteerde productielijn, datacollectie van processtappen, tijdmetingen en identificatie van bottlenecks. Levering: analyseverslag met meetdata en aanbevelingen."
+            },
+            "Requirements Definition": {
+                "start_date": "2024-06-11",
+                "end_date": "2024-06-15",
+                "resources": ["Antonio", "Sander"],
+                "costs": 8000,
+                "detailed_description": "Opstellen van functionele en niet-functionele requirements: performance targets, veiligheidscriteria, interface-eisen (PLC, MES), dataverzamelingsvereisten en acceptatiecriteria."
+            },
+            "Risk & Cost Analysis": {
+                "start_date": "2024-06-16",
+                "end_date": "2024-06-20",
+                "resources": ["Ennis"],
+                "costs": 6000,
+                "detailed_description": "Risico-identificatie (technisch, operationeel, veiligheidsrisico's) en inschatting van investerings- en operationele kosten. Scenarioanalyse en gevoeligheidsanalyse voor ROI-berekeningen."
+            }
+        },
+        "Design, Planning & Simulation": {
+            "System Architecture Design": {
+                "start_date": "2024-06-21",
+                "end_date": "2024-06-30",
+                "resources": ["Alexander", "Antonio"],
+                "costs": 12000,
+                "dependencies": ["Project Initiation & Analysis:Requirements Definition"],
+                "notes": "Bevat lay-out van robotica, sensoren en netwerk",
+                "detailed_description": "Technisch ontwerp van de pilotlijn: specificatie van AMR's en robots, sensorplaatsing (IoT), netwerktopologie, veiligheidsbarrières en integratiepunten met bestaand MES/PLC. Inclusief componentselectie en kostenraming."
+            },
+            "Simulation & Digital Twin": {
+                "start_date": "2024-07-01",
+                "end_date": "2024-07-10",
+                "resources": ["Ewann"],
+                "costs": 10000,
+                "dependencies": ["Design, Planning & Simulation:System Architecture Design"],
+                "notes": "Opzetten Digital Twin en valideer scenario's",
+                "detailed_description": "Ontwikkelen van een Digital Twin-model voor simulatie van materiaalstromen, machinebezetting en AMR-bewegingen. Uitvoeren van scenario-tests en performance-simulaties om ontwerpkeuzes te valideren."
+            },
+            "Planning & Scheduling": {
+                "start_date": "2024-06-21",
+                "end_date": "2024-07-05",
+                "resources": ["Jona"],
+                "costs": 4000,
+                "dependencies": ["Project Initiation & Analysis:Process & Workflow Analysis"],
+                "notes": "Planningsstrategieën om productie-interrupties te vermijden",
+                "detailed_description": "Werkplanning en implementatiestrategie opstellen om de bestaande productiecontinuïteit te waarborgen tijdens integratie. Includes cutover windows and fallback plans."
+            },
+            "Design Review": {
+                "start_date": "2024-07-08",
+                "end_date": "2024-07-10",
+                "resources": ["Stuurgroep"],
+                "costs": 2000,
+                "dependencies": [
+                    "Design, Planning & Simulation:System Architecture Design",
+                    "Design, Planning & Simulation:Simulation & Digital Twin"
+                ],
+                "notes": "Formele review en go/no-go voor prototype",
+                "detailed_description": "Formele technische en veiligheidsreview met stuurgroep en operationele stakeholders. Besluitruimte voor prototypebouw en verdere investeringen."
+            }
+        },
+        "Prototype Development & Testing": {
+            "Prototype Build": {
+                "start_date": "2024-07-11",
+                "end_date": "2024-07-25",
+                "resources": ["Alexander", "Antonio"],
+                "costs": 20000,
+                "dependencies": ["Design, Planning & Simulation:Design Review"],
+                "notes": "Bouwen in testzone; isolatie van live productielijn",
+                "detailed_description": "Fysieke bouw en configuratie van de pilotinstallatie in een afgesloten testzone. Inclusief integratie van robots, AMR's, sensoren en controllers. Levering van testopstelling en baseline-documentatie."
+            },
+            "Testing & Validation": {
+                "start_date": "2024-07-26",
+                "end_date": "2024-08-05",
+                "resources": ["Ewann", "Sander"],
+                "costs": 5000,
+                "dependencies": ["Prototype Development & Testing:Prototype Build"],
+                "notes": "Unit tests, veiligheidsevaluaties en performantie-benchmarks",
+                "detailed_description": "Gefaseerde testaanpak: unit tests voor subsystemen, veiligheidsaudits, performantiebenchmarks en regressietests. Resultaten vormen input voor iteraties of go/no-go."
+            },
+            "Operator Training": {
+                "start_date": "2024-08-01",
+                "end_date": "2024-08-10",
+                "resources": ["Jona"],
+                "costs": 3000,
+                "dependencies": ["Prototype Development & Testing:Testing & Validation"],
+                "notes": "Trainingssessies en trainingsmateriaal voor eindgebruikers",
+                "detailed_description": "Opleidingsprogramma voor operatoren en onderhoudspersoneel inclusief handleidingen, hands-on trainingen en competentietoetsen."
+            }
+        },
+        "Pilot Line Implementation": {
+            "Integration Preparation": {
+                "start_date": "2024-08-11",
+                "end_date": "2024-08-14",
+                "resources": ["All"],
+                "costs": 3000,
+                "dependencies": ["Prototype Development & Testing:Testing & Validation"],
+                "notes": "Communicatie, planningen en voorbereidingen voor integratie",
+                "detailed_description": "Operationele voorbereidingen: change management, communicatie naar productieteam, detaillering van cutoverprocedures en reservemaatregelen."
+            },
+            "System Integration": {
+                "start_date": "2024-08-15",
+                "end_date": "2024-08-22",
+                "resources": ["Alexander", "Ewann"],
+                "costs": 15000,
+                "dependencies": ["Pilot Line Implementation:Integration Preparation"],
+                "notes": "Fasegewijze integratie en compatibility tests",
+                "detailed_description": "Integratie van het prototype met de live lijn: fysieke montage, systeeminterfaces, netwerkconfiguratie en integratietests met bestaande systemen."
+            },
+            "Commissioning & Validation": {
+                "start_date": "2024-08-23",
+                "end_date": "2024-08-28",
+                "resources": ["Sander", "Ennis"],
+                "costs": 5000,
+                "dependencies": ["Pilot Line Implementation:System Integration"],
+                "notes": "Finale validatie en performance monitoring",
+                "detailed_description": "Inbedrijfstelling: validatie t.o.v. acceptatiecriteria, performance monitoring en fine-tuning van parameters. Rapportage van meetresultaten en openstaande acties."
+            }
+        },
+        "Evaluation & Reporting": {
+            "Performance Evaluation": {
+                "start_date": "2024-08-29",
+                "end_date": "2024-08-31",
+                "resources": ["Jona", "Ewann"],
+                "costs": 2000,
+                "dependencies": ["Pilot Line Implementation:Commissioning & Validation"],
+                "notes": "Meet en rapporteer KPI's tegenover baseline",
+                "detailed_description": "Analyseer gemeten KPI's (doorvoer, kwaliteit, downtime) en vergelijk met baseline. Identificeer verbeterpunten en documenteer lessons learned."
+            },
+            "ROI & Feasibility Analysis": {
+                "start_date": "2024-08-29",
+                "end_date": "2024-08-31",
+                "resources": ["Ennis"],
+                "costs": 2000,
+                "dependencies": ["Evaluation & Reporting:Performance Evaluation"],
+                "notes": "Financiële analyse en beslissing voor opschaling",
+                "detailed_description": "Gedetailleerde financiële analyse inclusief CAPEX/OPEX-scenario's, terugverdientijd, en gevoeligheidsanalyse voor verschillende opschalingsopties."
+            },
+            "Final Reporting & Closure": {
+                "start_date": "2024-08-29",
+                "end_date": "2024-08-31",
+                "resources": ["Stuurgroep", "All"],
+                "costs": 1500,
+                "dependencies": [
+                    "Evaluation & Reporting:Performance Evaluation",
+                    "Evaluation & Reporting:ROI & Feasibility Analysis"
+                ],
+                "notes": "Eindrapport, overdracht en projectafsluiting",
+                "detailed_description": "Opstellen van het eindrapport, overdrachtsdocumenten voor operations, and aanbevelingen voor opschaling. Formele afsluiting met demonstratie aan de stuurgroep."
+            }
+        }
+    }
+}

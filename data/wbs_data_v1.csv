@@ -1,0 +1,18 @@
+task_name,start_date,end_date,resources,costs,dependencies,parent,child
+Kick-off & Project Setup,2024-06-01,2024-06-05,"['Alexander', 'Ennis']",10000,[],Project Initiation & Analysis,Kick-off & Project Setup
+Process & Workflow Analysis,2024-06-06,2024-06-10,"['Ewann', 'Jona']",5000,[],Project Initiation & Analysis,Process & Workflow Analysis
+Requirements Definition,2024-06-11,2024-06-15,"['Antonio', 'Sander']",8000,[],Project Initiation & Analysis,Requirements Definition
+Risk & Cost Analysis,2024-06-16,2024-06-20,['Ennis'],6000,[],Project Initiation & Analysis,Risk & Cost Analysis
+System Architecture Design,2024-06-21,2024-06-30,"['Alexander', 'Antonio']",12000,['Project Initiation & Analysis:Requirements Definition'],"Design, Planning & Simulation",System Architecture Design
+Simulation & Digital Twin,2024-07-01,2024-07-10,['Ewann'],10000,"['Design, Planning & Simulation:System Architecture Design']","Design, Planning & Simulation",Simulation & Digital Twin
+Planning & Scheduling,2024-06-21,2024-07-05,['Jona'],4000,['Project Initiation & Analysis:Process & Workflow Analysis'],"Design, Planning & Simulation",Planning & Scheduling
+Design Review,2024-07-08,2024-07-10,['Stuurgroep'],2000,"['Design, Planning & Simulation:System Architecture Design', 'Design, Planning & Simulation:Simulation & Digital Twin']","Design, Planning & Simulation",Design Review
+Prototype Build,2024-07-11,2024-07-25,"['Alexander', 'Antonio']",20000,"['Design, Planning & Simulation:Design Review']",Prototype Development & Testing,Prototype Build
+Testing & Validation,2024-07-26,2024-08-05,"['Ewann', 'Sander']",5000,['Prototype Development & Testing:Prototype Build'],Prototype Development & Testing,Testing & Validation
+Operator Training,2024-08-01,2024-08-10,['Jona'],3000,['Prototype Development & Testing:Testing & Validation'],Prototype Development & Testing,Operator Training
+Integration Preparation,2024-08-11,2024-08-14,['All'],3000,['Prototype Development & Testing:Testing & Validation'],Pilot Line Implementation,Integration Preparation
+System Integration,2024-08-15,2024-08-22,"['Alexander', 'Ewann']",15000,['Pilot Line Implementation:Integration Preparation'],Pilot Line Implementation,System Integration
+Commissioning & Validation,2024-08-23,2024-08-28,"['Sander', 'Ennis']",5000,['Pilot Line Implementation:System Integration'],Pilot Line Implementation,Commissioning & Validation
+Performance Evaluation,2024-08-29,2024-08-31,"['Jona', 'Ewann']",2000,['Pilot Line Implementation:Commissioning & Validation'],Evaluation & Reporting,Performance Evaluation
+ROI & Feasibility Analysis,2024-08-29,2024-08-31,['Ennis'],2000,['Evaluation & Reporting:Performance Evaluation'],Evaluation & Reporting,ROI & Feasibility Analysis
+Final Reporting & Closure,2024-08-29,2024-08-31,"['Stuurgroep', 'All']",1500,"['Evaluation & Reporting:Performance Evaluation', 'Evaluation & Reporting:ROI & Feasibility Analysis']",Evaluation & Reporting,Final Reporting & Closure
