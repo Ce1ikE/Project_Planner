@@ -23,7 +23,8 @@ def main():
             input_path=DATA_DIR / f"wbs_data_{version}.json",
             output_path_dir=RESULTS_DIR / f"visualization_{version}",
         ).build_gantt_chart(
-            draw_dependencies=True
+            draw_dependencies=True,
+            draw_groups=True,
         )
 
 
