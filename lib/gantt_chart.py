@@ -19,6 +19,8 @@ MONTH_FONT_SIZE = 10
 MONTH_FONT_WEIGHT = "bold"
 MONTH_FONT_COLOR = FONT_COLOR
 
+DEPENDENCIES_COLOR = "#767170"
+
 class GanttChart:
     def __init__(
         self,
@@ -35,6 +37,7 @@ class GanttChart:
         month_font_size = MONTH_FONT_SIZE,
         month_font_weight = MONTH_FONT_WEIGHT,
         month_font_color = MONTH_FONT_COLOR,
+        dependencies_color = DEPENDENCIES_COLOR,
     ):
         self.input_path = input_path
         self.output_path_dir = output_path_dir
@@ -50,6 +53,8 @@ class GanttChart:
         self.month_font_size = month_font_size
         self.month_font_weight = month_font_weight
         self.month_font_color = month_font_color
+
+        self.dependencies_color = dependencies_color
         
         self.fontdict = {
             "fontfamily": "monospace",
@@ -193,6 +198,8 @@ class GanttChart:
                 'x': x_center,
                 'bottom': bar.get_y(),
                 'left': bar.get_x(),
+                'width': bar.get_width(),
+                'height': bar.get_height(),
                 'start_num': start_num,
                 'end_num': end_num,
                 'parent': parent
@@ -264,12 +271,19 @@ class GanttChart:
                     pred_start_num = pred['start_num']
                     pred_end_num = pred['end_num']
                     pred_left = pred['left']
+                    pred_width = pred['width']
+                    pred_right = pred_left + pred_width
+                    pred_parent = pred.get('parent', None)
+                    
                     succ_x = succ['x']
                     succ_y = succ['y']
                     succ_bottom = succ['bottom']
                     succ_start_num = succ['start_num']
                     succ_end_num = succ['end_num']
                     succ_left = succ['left']
+                    succ_width = succ['width']
+                    succ_right = succ_left + succ_width
+                    succ_parent = succ.get('parent', None)
 
                     # build orthogonal polyline points if pred_x < succ_x
                     # from   (pred x_center,pred bottom) -> (pred x_center, succ y_center)
@@ -277,21 +291,37 @@ class GanttChart:
                     x_pts = [pred_x, pred_x, succ_left]
                     y_pts = [pred_bottom, succ_y, succ_y]
 
-                    # if pred_x == succ_x then we need some extra points to go around
-                    if pred_x == succ_x:
-                        x_pts = [pred_x, pred_x + 2, succ_x + 2, succ_x]
-                        y_pts = [pred_bottom, pred_bottom, succ_bottom, succ_bottom]
-
-                    # draw the polyline
-                    ax.plot(x_pts, y_pts, color='gray', lw=0.9, zorder=1)
-                    # draw arrow head at the end
-                    ax.annotate(
-                        '', 
-                        xy=(succ_left, succ_y), 
-                        xytext=(succ_left - 0.01, succ_y),
-                        arrowprops=dict(arrowstyle='->', color='gray', lw=1.0), 
-                        annotation_clip=False
-                    )
+                    # if pred_x == succ_x then we need a other way to indicate interdependency  between tasks with similar parent
+                    if pred_x == succ_x and pred_parent == succ_parent:
+                        # use a diamond marker to indicate interdependency
+                        ax.plot(
+                            [pred_x, pred_x], 
+                            [pred_bottom, succ_y], 
+                            color=self.dependencies_color, 
+                            lw=0.9, 
+                            zorder=1, 
+                            marker='D', 
+                            markersize=5, 
+                            markerfacecolor=self.dependencies_color, 
+                            markeredgecolor=self.dependencies_color
+                        )
+                    else:
+                        # draw the polyline
+                        ax.plot(
+                            x_pts, 
+                            y_pts, 
+                            color=self.dependencies_color, 
+                            lw=0.9, 
+                            zorder=1
+                        )
+                        # draw arrow head at the end
+                        ax.annotate(
+                            '', 
+                            xy=(succ_left, succ_y), 
+                            xytext=(succ_left - 0.01, succ_y),
+                            arrowprops=dict(arrowstyle='->', color=self.dependencies_color, lw=1.0), 
+                            annotation_clip=False
+                        )
 
         # annotate the first x-axis for the weeks 
         ax.set_xticks(week_positions)
