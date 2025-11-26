@@ -80,4 +80,6 @@ python .\main.py
 # or using uv
 uv run .\main.py
 ```
-
+## Example
+![sample image](./results/visualization_v1/gantt_chart.png)
+![sample image](./results/visualization_v1/work_breakdown_structure.png)
