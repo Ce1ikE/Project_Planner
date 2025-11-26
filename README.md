@@ -43,7 +43,7 @@ Windows PowerShell (recommended workflow):
 
 1) Create and activate a virtual environment
 
-```powershell
+```sh
 python -m venv .venv
 # or using uv
 # install uv : https://docs.astral.sh/uv/getting-started/installation/
@@ -62,7 +62,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 
 2) Install required packages:
 
-```powershell
+```sh
 pip install -r requirement.txt
 # or using uv
 uv sync
@@ -73,7 +73,7 @@ uv add -r requirements.txt
 
 3) Run the main program `main.py` (entrypoint)
 
-```powershell
+```sh
 # run with plain Python
 python .\main.py
 # might also be python3 or py (alias in windows)
