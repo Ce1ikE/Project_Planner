@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import pandas as pd
 import networkx as nx
+from collections import defaultdict
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch
 
@@ -94,8 +95,10 @@ class WBS:
         x_range = [pos_min_x * scale_factor, pos_max_x * scale_factor]
         y_range = [pos_min_y * scale_factor, pos_max_y * scale_factor]
 
-        width = max(20, n_nodes * 0.2)
+        width = max(20, n_nodes * 0.1)
         height = max(20, n_nodes * 0.1)
+
+        cmap = plt.get_cmap('tab20')
 
         # ------- extract edges ------- #
         edge_x, edge_y = [], []
@@ -114,7 +117,7 @@ class WBS:
             text.append(node)
 
         # ------- create figure ------- #
-        fig = plt.figure(figsize=(width, height))
+        fig = plt.figure(figsize=(width, height),facecolor='lightgrey')
         ax = fig.add_subplot(1, 1, 1)
         fig.suptitle(
             t="Work Breakdown Structure - " + self.title,
@@ -155,7 +158,7 @@ class WBS:
         fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
 
-        # compute label bbox extents in data coordinates
+        # compute label bbox extents in data coordinates (both x and y)
         label_bboxes = {}
         for node, txt in label_artists.items():
             bbox_disp = txt.get_window_extent(renderer=renderer)
@@ -165,7 +168,55 @@ class WBS:
             right_top = inv.transform((bbox_disp.x1, bbox_disp.y1))
             left_x = left_bottom[0]
             right_x = right_top[0]
-            label_bboxes[node] = (left_x, right_x)
+            bottom_y = left_bottom[1]
+            top_y = right_top[1]
+            label_bboxes[node] = (left_x, right_x, bottom_y, top_y)
+
+        # draw group background bands for nodes that share the same first-order parent
+        # build parent map (child -> parent) from the flattened WBS dataframe
+        parent_map = dict(zip(self.wbs_df['child'], self.wbs_df['parent']))
+
+        def get_first_order_parent(node):
+            # walk up until parent is 'wbs' (root) or missing; return the first-level parent
+            p = parent_map.get(node)
+            if p is None or p == 'wbs':
+                # node is a top-level group or orphan
+                return node if p == 'wbs' else p
+            # climb until parent of p is 'wbs'
+            while True:
+                grand = parent_map.get(p)
+                if grand is None or grand == 'wbs':
+                    return p
+                p = grand
+
+        groups = defaultdict(list)
+        for node in G.nodes():
+            if node not in label_bboxes:
+                continue
+            first_parent = get_first_order_parent(node)
+            groups[first_parent].append(node)
+
+        # choose colors for groups
+        group_keys = [k for k in groups.keys() if k is not None]
+        group_color_map = {g: cmap(i % getattr(cmap, 'N', 20)) for i, g in enumerate(group_keys)}
+        group_alpha = 0.2
+
+        for group_name, nodes_in_group in groups.items():
+            # compute vertical span using label bbox y extents
+            bottoms = [label_bboxes[n][2] for n in nodes_in_group]
+            tops = [label_bboxes[n][3] for n in nodes_in_group]
+            if not bottoms or not tops:
+                continue
+            bottom = min(bottoms) - 0.3
+            top = max(tops) + 0.3
+            color = group_color_map.get(group_name, (0.9, 0.9, 0.9))
+            ax.axhspan(
+                bottom, 
+                top, 
+                facecolor=color, 
+                alpha=group_alpha, 
+                zorder=0
+            )
 
         # draw edges manually so they attach to label box sides
         for u, v in G.edges():
@@ -189,9 +240,12 @@ class WBS:
             )
             ax.add_patch(arr)
 
-        ax.set_facecolor('lightgray')
-        plt.gca().set_facecolor('lightgray')
-        plt.gca().axes.margins(x=0.5, y=0.2)
+        # adds a horizontal span accross groups with same first order parent
+
+
+        ax.set_facecolor('white')
+        ax.margins(x=0.4, y=0.2)
+
         plt.tight_layout()
         plt.savefig(self.output_path_dir / 'work_breakdown_structure.png')
         plt.savefig(self.output_path_dir / 'work_breakdown_structure.svg', format='svg')
