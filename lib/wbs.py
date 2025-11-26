@@ -39,7 +39,7 @@ class WBS:
             data = json.load(f)
         wbs_data = self._flatten_wbs(data)
         self.wbs_df = pd.DataFrame(wbs_data)
-        self.wbs_df.to_csv(data_path.parent / f'{data_path.stem}.csv', index=False)
+        self.wbs_df.to_csv(data_path.parent / f'wbs_data_{data_path.stem}.csv', index=False)
 
     def _from_csv(self, data_path: Path):
         self.wbs_df = pd.read_csv(data_path)
@@ -193,9 +193,9 @@ class WBS:
         plt.gca().set_facecolor('lightgray')
         plt.gca().axes.margins(x=0.5, y=0.2)
         plt.tight_layout()
-        plt.savefig(self.output_path_dir / 'wbs_visualization_networkx.png')
-        plt.savefig(self.output_path_dir / 'wbs_visualization_networkx.svg', format='svg')
-        plt.savefig(self.output_path_dir / 'wbs_visualization_networkx.pdf', format='pdf')
+        plt.savefig(self.output_path_dir / 'work_breakdown_structure.png')
+        plt.savefig(self.output_path_dir / 'work_breakdown_structure.svg', format='svg')
+        plt.savefig(self.output_path_dir / 'work_breakdown_structure.pdf', format='pdf')
         plt.close()
 
         

@@ -1,0 +1,23 @@
+parent,child
+wbs,Project Initiation & Analysis
+Project Initiation & Analysis,Kick-off & Project Setup
+Project Initiation & Analysis,Process & Workflow Analysis
+Project Initiation & Analysis,Requirements Definition
+Project Initiation & Analysis,Risk & Cost Analysis
+wbs,"Design, Planning & Simulation"
+"Design, Planning & Simulation",System Architecture Design
+"Design, Planning & Simulation",Simulation & Digital Twin
+"Design, Planning & Simulation",Planning & Scheduling
+"Design, Planning & Simulation",Design Review
+wbs,Prototype Development & Testing
+Prototype Development & Testing,Prototype Build
+Prototype Development & Testing,Testing & Validation
+Prototype Development & Testing,Operator Training
+wbs,Pilot Line Implementation
+Pilot Line Implementation,Integration Preparation
+Pilot Line Implementation,System Integration
+Pilot Line Implementation,Commissioning & Validation
+wbs,Evaluation & Reporting
+Evaluation & Reporting,Performance Evaluation
+Evaluation & Reporting,ROI & Feasibility Analysis
+Evaluation & Reporting,Final Reporting & Closure

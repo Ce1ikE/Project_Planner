@@ -18,7 +18,6 @@ DAY_FONT_COLOR = FONT_COLOR
 MONTH_FONT_SIZE = 10
 MONTH_FONT_WEIGHT = "bold"
 MONTH_FONT_COLOR = FONT_COLOR
-
 DEPENDENCIES_COLOR = "#767170"
 
 class GanttChart:
@@ -97,7 +96,7 @@ class GanttChart:
             data = json.load(f)
         data = self._flatten_wbs(data)
         self.tasks_df = pd.DataFrame(data)
-        self.tasks_df.to_csv(file_path.parent / f'{file_path.stem}.csv', index=False)
+        self.tasks_df.to_csv(file_path.parent / f'gantt_data_{file_path.stem}.csv', index=False)
 
     def _flatten_wbs(self, data: dict, parent=None, level=0, rows=None):
         # Flatten the nested `wbs` structure into rows suitable for a Gantt chart.
