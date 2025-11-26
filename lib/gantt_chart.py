@@ -213,21 +213,22 @@ class GanttChart:
             if resources_str:
                 label = label + ' | ' + resources_str
 
-            padding = 0.5
+            gap = 2.5
             # put text next to the right of the bar
             ax.annotate(
                 label,
-                xy=(bar.get_x() + bar.get_width() + padding, y_center),
+                xy=(bar.get_x() + bar.get_width() + gap, y_center),
                 ha='left',
                 va='center',
                 fontsize=8,
                 color='black',
                 fontfamily='monospace',
-                clip_on=False
+                clip_on=False,
+                bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.8)
             )
 
+        # draw horizontal lines on top of the graph to group tasks by parent
         if draw_groups:
-            # draw horizontal lines on top of the graph to group tasks by parent
             color_groups = plt.get_cmap('tab20')
             group_color_map = {g: color_groups(i % getattr(color_groups, 'N', 20)) for i, g in enumerate(groups.keys())}
             group_alpha = 0.2
@@ -251,14 +252,14 @@ class GanttChart:
                     zorder=0
                 )
 
-        # optionally draw orthogonal dependency connectors
+        # draws orthogonal dependency connectors
         if draw_dependencies:
             for idx, task in enumerate(tasks.itertuples(index=False)):
                 deps = task.dependencies if isinstance(task.dependencies, (list, tuple)) else ([task.dependencies] if task.dependencies else [])
                 for dep in deps:
                     if not dep:
                         continue
-                    # dependency may be in format 'Group:Task'
+                    # dependency may be in format 'Group:Task' inside the json source file
                     pred_name = dep.split(':', 1)[1].strip() if ':' in dep else dep.strip()
                     if pred_name not in bar_info or task.task_name not in bar_info:
                         continue
@@ -292,21 +293,33 @@ class GanttChart:
                     y_pts = [pred_bottom, succ_y, succ_y]
 
                     # if pred_x == succ_x then we need a other way to indicate interdependency  between tasks with similar parent
+                    # we'll use markers in the center of each bar to indicate interdependency between tasks with similar start positions
                     if pred_x == succ_x and pred_parent == succ_parent:
-                        # use a diamond marker to indicate interdependency
-                        ax.plot(
-                            [pred_x, pred_x], 
-                            [pred_bottom, succ_y], 
-                            color=self.dependencies_color, 
-                            lw=0.9, 
-                            zorder=1, 
-                            marker='D', 
-                            markersize=5, 
-                            markerfacecolor=self.dependencies_color, 
-                            markeredgecolor=self.dependencies_color
+                        curr_pred_count = pred.get("dependencies_marker", 0) + 1
+                        curr_succ_count = succ.get("dependencies_marker", 0) + 1
+                        pred["dependencies_marker"] = curr_pred_count
+                        succ["dependencies_marker"] = curr_succ_count
+                        
+                        if pred.get("dependencies_marker", 0) is not 0 or succ.get("dependencies_marker", 0) is not 0:
+                            clr_dependencies = plt.get_cmap("hsv")
+                            clr_dependencies = clr_dependencies(pred["dependencies_marker"] * 1.0 / 12)
+                            pred_x += 0.4 * pred.get("dependencies_marker", 0)
+                            succ_x += 0.4 * succ.get("dependencies_marker", 0)
+                        else:
+                            clr_dependencies = self.dependencies_color
+
+                        ax.scatter(
+                            [pred_x, succ_x], 
+                            [pred_y, succ_y], 
+                            s=10, 
+                            marker='o', 
+                            linewidth=0.5, 
+                            facecolor=clr_dependencies,
+                            zorder=2,
+                            hatch='/' * pred.get("dependencies_marker", 0),
+                            edgecolor="black"
                         )
                     else:
-                        # draw the polyline
                         ax.plot(
                             x_pts, 
                             y_pts, 
@@ -314,7 +327,6 @@ class GanttChart:
                             lw=0.9, 
                             zorder=1
                         )
-                        # draw arrow head at the end
                         ax.annotate(
                             '', 
                             xy=(succ_left, succ_y), 
