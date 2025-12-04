@@ -1,16 +1,20 @@
 import json
-from pathlib import Path
 import pandas as pd
 import networkx as nx
-from collections import defaultdict
 import matplotlib.pyplot as plt
+
+from pathlib import Path
+from collections import defaultdict
 from matplotlib.patches import FancyArrowPatch
+
+from .global_const import *
 
 class WBS:
     def __init__(
         self,
         input_path: Path = None,
         output_path_dir: Path = None,
+        font_dict: dict = FONT_DICT,
     ):
         self.wbs_df: pd.DataFrame = None
         self.fig = None
@@ -18,6 +22,7 @@ class WBS:
         self.title = None
 
         self.input_path = input_path
+        self.fontdict = font_dict
 
         self.output_path_dir = output_path_dir
         self.output_path_dir.mkdir(parents=True, exist_ok=True)
@@ -121,9 +126,9 @@ class WBS:
         ax = fig.add_subplot(1, 1, 1)
         fig.suptitle(
             t="Work Breakdown Structure - " + self.title,
-            fontsize=16, 
-            fontweight='bold', 
-            family='monospace', 
+            fontsize=self.fontdict.get("fontsize", 16), 
+            fontweight=self.fontdict.get("fontweight", 'bold'),
+            family=self.fontdict.get("fontfamily", 'monospace'), 
             y=0.95
         )
         # draw node markers but keep them invisible
@@ -147,9 +152,9 @@ class WBS:
                 bbox=dict(boxstyle="round", pad=0.5, fc="white", ec="black", lw=1),
                 horizontalalignment='left',
                 verticalalignment='center',
-                fontsize=16,
-                fontfamily='monospace',
-                fontweight='bold',
+                fontsize=self.fontdict.get("fontsize", 10),
+                fontfamily=self.fontdict.get("fontfamily", "monospace"),
+                fontweight=self.fontdict.get("fontweight", "bold"),
                 zorder=3,
             )
             label_artists[node] = txt
@@ -251,6 +256,8 @@ class WBS:
         plt.savefig(self.output_path_dir / 'work_breakdown_structure.svg', format='svg')
         plt.savefig(self.output_path_dir / 'work_breakdown_structure.pdf', format='pdf')
         plt.close()
+
+        return self
 
         
 

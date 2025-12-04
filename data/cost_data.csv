@@ -1,0 +1,35 @@
+Category,Subcategory,Item/Model,Unit_Cost_EUR,Payload_kg,Reach_mm
+Automation_Cost_Estimate,Light_Products_(<=20_kg),Import_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Light_Products_(<=20_kg),Import_MiR600,85603.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Light_Products_(<=20_kg),Production_Line_Average_Unit_Cost,45400.0,,"Note 2: Robot arm average cost"
+Automation_Cost_Estimate,Light_Products_(<=20_kg),Export_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Light_Products_(<=20_kg),Export_MiR600,85603.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Medium_Products_(20–120_kg),Import_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Medium_Products_(20–120_kg),Import_MiR600,85603.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Medium_Products_(20–120_kg),Production_Line_Average_Unit_Cost,90816.0,,"Note 2: Robot arm average cost"
+Automation_Cost_Estimate,Medium_Products_(20–120_kg),Export_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Medium_Products_(20–120_kg),Export_MiR600,85603.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Heavy_Products_(>=200_kg),Import_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Heavy_Products_(>=200_kg),Import_MiR600,102093.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Heavy_Products_(>=200_kg),Production_Line_Average_Unit_Cost,170300.0,,"Note 2: Robot arm average cost"
+Automation_Cost_Estimate,Heavy_Products_(>=200_kg),Export_MiR1200,143055.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Heavy_Products_(>=200_kg),Export_MiR1350,102093.0,,"Note 1: AGV"
+Automation_Cost_Estimate,Other_Costs,Software,2000.0,,
+Automation_Cost_Estimate,Other_Costs,Safety,20000.0,,
+Automation_Cost_Estimate,Other_Costs,Accessories,10000.0,,
+Automation_Cost_Estimate,Other_Costs,7th_Axis_per_robot_arm,6500.0,,
+Automation_Cost_Estimate,Other_Costs,Extras,50000.0,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Light_Products_(Base),584716.0,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Light_Products_(+10%_Unforeseen),643187.6,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Medium_Products_(Base),630132.0,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Medium_Products_(+10%_Unforeseen),693145.0,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Heavy_Products_(Base),709616.0,,
+Automation_Cost_Estimate,Total_Project_Cost,Total_Heavy_Products_(+10%_Unforeseen),780577.6,,
+Robot_Reference_Specifications,Light_Products,KR_AGILUS,,3-10,up to 900
+Robot_Reference_Specifications,Light_Products,KR_CYBERTECH_/_CYBERTECH_nano,,6-22,up to 1800
+Robot_Reference_Specifications,Light_Products,LBR_iiwa,,7-14,up to 1300
+Robot_Reference_Specifications,Light_Products,LBR_iisy,,11-15,up to 1300
+Robot_Reference_Specifications,Medium_Products,KR_IONTEC,,20-120,up to 2700
+Robot_Reference_Specifications,Medium_Products,KR_QUANTEC,,90-300,up to 3100
+Robot_Reference_Specifications,Heavy_Products,KR_FORTEC,,240-600,up to 3700
+Robot_Reference_Specifications,Heavy_Products,KR_TITAN_/_TITAN_Ultra,,500-1500,up to 4000

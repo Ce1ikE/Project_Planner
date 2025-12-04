@@ -1,0 +1,9 @@
+Category,Subcategory,Item/Model,Unit_Cost_EUR,Payload_kg,Reach_mm
+Robot_Reference_Specifications,Light_Products,KR_AGILUS,,3-10,up to 900
+Robot_Reference_Specifications,Light_Products,KR_CYBERTECH_/_CYBERTECH_nano,,6-22,up to 1800
+Robot_Reference_Specifications,Light_Products,LBR_iiwa,,7-14,up to 1300
+Robot_Reference_Specifications,Light_Products,LBR_iisy,,11-15,up to 1300
+Robot_Reference_Specifications,Medium_Products,KR_IONTEC,,20-120,up to 2700
+Robot_Reference_Specifications,Medium_Products,KR_QUANTEC,,90-300,up to 3100
+Robot_Reference_Specifications,Heavy_Products,KR_FORTEC,,240-600,up to 3700
+Robot_Reference_Specifications,Heavy_Products,KR_TITAN_/_TITAN_Ultra,,500-1500,up to 4000
