@@ -1,24 +1,13 @@
 import json
-from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+
+from pathlib import Path
+from turtle import color
 from collections import defaultdict
 
-DATE_FORMAT = '%Y-%m-%d'
-TITLE_SIZE = 12
-TITLE_FONT_WEIGHT = "bold"
-FONT_COLOR = "#6C6C6C"
-X_LABEL = "Timeline"
-Y_LABEL = "Tasks"
-LABEL_SIZE = 8
-DAY_FONT_SIZE = 8
-DAY_FONT_WEIGHT = "bold"
-DAY_FONT_COLOR = FONT_COLOR
-MONTH_FONT_SIZE = 10
-MONTH_FONT_WEIGHT = "bold"
-MONTH_FONT_COLOR = FONT_COLOR
-DEPENDENCIES_COLOR = "#767170"
+from .global_const import *
 
 class GanttChart:
     def __init__(
@@ -37,10 +26,39 @@ class GanttChart:
         month_font_weight = MONTH_FONT_WEIGHT,
         month_font_color = MONTH_FONT_COLOR,
         dependencies_color = DEPENDENCIES_COLOR,
+        group_alpha = GROUP_ALPHA,
+        font_dict: dict = FONT_DICT,
     ):
+        """
+        Gantt Chart visualization class
+        Allows building Gantt charts from hierarchical task data.
+        and to build milestone charts and deliverables tables.
+
+        Args:
+            input_path (Path): Path to the input file containing task data.
+            output_path_dir (Path): Directory where output files will be saved.
+            data_date_format (str): Format of the date strings in the input data.
+            title_size (int): Font size for the chart title.
+            title_font_weight (int): Font weight for the chart title.
+            y_label (str): Label for the Y-axis.
+            x_label (str): Label for the X-axis.
+            day_font_size (int): Font size for day labels.
+            day_font_weight (int): Font weight for day labels.
+            day_font_color (str): Font color for day labels.
+            month_font_size (int): Font size for month labels.
+            month_font_weight (int): Font weight for month labels.
+            month_font_color (str): Font color for month labels.
+            dependencies_color (str): Color for dependency lines.
+            group_alpha (float): Transparency level for group bars.
+        """
+
         self.input_path = input_path
+
         self.output_path_dir = output_path_dir
         self.output_path_dir.mkdir(parents=True, exist_ok=True)
+        if self.output_path_dir.exists() is False:
+            raise ValueError("Output path directory must exist.")
+
         
         self.y_label = y_label
         self.x_label = x_label
@@ -54,20 +72,20 @@ class GanttChart:
         self.month_font_color = month_font_color
 
         self.dependencies_color = dependencies_color
+        self.group_alpha = group_alpha
         
         self.fontdict = {
             "fontfamily": "monospace",
             "fontsize": 10,
             "fontweight": "bold",
             "color": FONT_COLOR,
-        }
+        } if font_dict is None else font_dict
 
         self.title_size = title_size
         self.title_font_weight = title_font_weight
         self.data_date_format = data_date_format
         
         self.tasks_df: pd.DataFrame = None
-        self.fig = None
 
         if self.input_path:
             if self.input_path.suffix == '.csv':
@@ -124,6 +142,9 @@ class GanttChart:
                         "resources": value.get("resources", []),
                         "costs": value.get("costs", 0),
                         "dependencies": value.get("dependencies", []),
+                        "deliverables": value.get("deliverables", []),
+                        "detailed_description": value.get("detailed_description", ""),
+                        "notes": value.get("notes", ""),
                         "parent": parent if parent else None,
                         "child": key,
                     })
@@ -132,12 +153,207 @@ class GanttChart:
                     self._flatten_wbs(value, key, level + 1, rows)
 
         return rows
+    
+    def _build_milestone_chart_table_df(self, draw_groups: bool = False):
+        # builds a milestone chart table from the tasks dataframe
+        # Fase | Date
+        milestone_rows = []
+        for idx, task in self.tasks_df.iterrows():
+            milestone_rows.append({
+                "Fase": task['task_name'],
+                "Group": task['parent'] if draw_groups else None,
+                "Date": task['end_date'].strftime(self.data_date_format) if pd.notna(task['end_date']) else None
+            })
+        df = pd.DataFrame(milestone_rows)
+        df.to_csv(self.output_path_dir / 'milestone_chart_data.csv', index=False)
+        return df
+    
+    def build_milestone_chart_table(
+        self, 
+        draw_groups: bool = False,
+        base_row_height: float = 0.2,
+    ):
+        """
+        Args:
+            draw_groups (bool): Whether to color rows based on their group.
+            base_row_height (float): Base height of each row in the table.
+        """  
+        milestone_df = self._build_milestone_chart_table_df(draw_groups=draw_groups)
+        
+        group_names = milestone_df['Group'].dropna().unique() if draw_groups else []
+        group_color_map = {name: plt.get_cmap('tab20')(i) for i, name in enumerate(group_names)}
+        
+
+        fig, ax = plt.subplots(figsize=(5, (len(milestone_df) + 1) * base_row_height * 1.2))
+        ax.set_title(self.title, fontdict=self.fontdict)
+        ax.axis('off')
+
+        df_to_display = milestone_df.drop(columns=["Group"])
+        col_labels = df_to_display.columns.tolist()
+        cell_text = df_to_display.values.tolist()
+
+        table = ax.table(
+            cellText=cell_text,
+            colLabels=col_labels,
+            cellLoc='left',
+            loc='center',
+        )
+
+        table.auto_set_font_size(False)
+        table.set_fontsize(self.fontdict.get("fontsize", 10))
+        table.auto_set_column_width(col=list(range(len(col_labels))))
+
+        for (row, col), cell in table.get_celld().items():
+            cell.set_facecolor("none") 
+            cell.set_edgecolor(self.fontdict.get("color", "black"))
+            
+            cell.set_text_props(
+                ha='left', 
+                va='center', 
+                wrap=False,
+                **self.fontdict
+            )
+
+            if row == 0:
+                cell.set_facecolor('#f2f2f2')
+                cell.set_text_props(fontweight='bold')
+            else:
+                task_data = milestone_df.iloc[row - 1]
+                
+                # --- COLORING LOGIC ---
+                if draw_groups:
+                    group_name = task_data["Group"]
+                    if group_name and group_name in group_color_map:
+                        color = group_color_map[group_name]
+                        cell.set_facecolor(list(color[:3]) + [self.group_alpha])
+
+        plt.tight_layout(pad=2)
+        plt.savefig(self.output_path_dir / 'milestone_chart.png', dpi=300)
+        plt.savefig(self.output_path_dir / 'milestone_chart.svg', format='svg')
+        plt.savefig(self.output_path_dir / 'milestone_chart.pdf', format='pdf')
+        plt.close()
+
+        return self
+    
+    def _build_deliverables_table_df(self, draw_groups: bool = False):
+        import textwrap
+        # builds a deliverables table from the tasks dataframe
+        # Fase | Deliverable
+        deliverable_rows = []
+        for idx, task in self.tasks_df.iterrows():
+            deliverables = task['deliverables']
+            if not isinstance(deliverables, (list, tuple)):
+                deliverables = [deliverables] if pd.notna(deliverables) and deliverables else []
+            wrapper = textwrap.TextWrapper(width=50)
+            joined_deliverable = '\n'.join([wrapper.fill(str(d)) for d in deliverables])
+
+            deliverable_rows.append({
+                "Fase": task['task_name'],
+                "Group": task['parent'] if draw_groups else None,
+                "Deliverables": joined_deliverable
+            })
+        df = pd.DataFrame(deliverable_rows)
+        df.to_csv(self.output_path_dir / 'deliverables_table.csv', index=False)
+        return df
+    
+    def build_deliverables_table(
+        self, 
+        draw_groups: bool = False,
+        base_row_height: float = 0.25,
+    ):
+        """
+        Args:
+            draw_groups (bool): Whether to color rows based on their group.
+            base_row_height (float): Base height of each row in the table.
+        """
+
+        deliverables_df = self._build_deliverables_table_df(draw_groups=draw_groups)
+
+        group_names = deliverables_df['Group'].dropna().unique() if draw_groups else []
+        group_color_map = {name: plt.get_cmap('tab20')(i % plt.get_cmap('tab20').N) for i, name in enumerate(group_names)}
+
+        max_lines = 1
+        for text in deliverables_df['Deliverables']:
+            max_lines = max(max_lines, str(text).count('\n') + 1)
+
+
+        fig_height = (len(deliverables_df) + 1) * base_row_height * 0.8 * max_lines
+        fig, ax = plt.subplots(figsize=(10, fig_height)) 
+        ax.set_title(self.title, fontdict=self.fontdict)
+        ax.axis('off')
+
+        df_to_display = deliverables_df.drop(columns=["Group"])
+        col_labels = df_to_display.columns.tolist()
+        cell_text = df_to_display.values.tolist()
+
+        table = ax.table(
+            cellText=cell_text,
+            colLabels=col_labels,
+            bbox=[0, 0, 1, 1],
+            cellLoc='left',
+            rowLoc='top',
+        )
+
+        table.auto_set_font_size(False)
+        table.set_fontsize(self.fontdict.get("fontsize", 10))
+        table.auto_set_column_width(col=list(range(len(col_labels))))
+
+        for (row, col), cell in table.get_celld().items():
+            cell.set_facecolor("none") 
+            cell.set_edgecolor(self.fontdict.get("color", "black"))
+            
+            cell.set_text_props(
+                wrap=True,
+                **self.fontdict
+            )
+
+            if row == 0:
+                cell.set_facecolor('#f2f2f2')
+                cell.set_text_props(fontweight='bold')
+                cell.set_height(base_row_height * 1.5)
+            else:
+                task_data = deliverables_df.iloc[row - 1]
+                
+                # --- COLORING LOGIC ---
+                if draw_groups:
+                    group_name = task_data["Group"]
+                    if group_name and group_name in group_color_map:
+                        color = group_color_map[group_name]
+                        cell.set_facecolor(list(color[:3]) + [self.group_alpha])
+                
+                # --- DYNAMIC ROW HEIGHT LOGIC ---
+                deliverables_text = str(task_data["Deliverables"])
+                num_lines = deliverables_text.count('\n') + 1 
+                dynamic_height = base_row_height * num_lines
+
+                for c in range(len(col_labels)):
+                    table.get_celld()[(row, c)].set_height(dynamic_height)
+
+        plt.tight_layout(pad=2)
+        plt.savefig(self.output_path_dir / 'deliverables_table.png', dpi=300)
+        plt.savefig(self.output_path_dir / 'deliverables_table.svg', format='svg')
+        plt.savefig(self.output_path_dir / 'deliverables_table.pdf', format='pdf')
+        plt.close()
+
+        return self
 
     def _build_week_ticks(self, start_date, end_date):
         mondays = pd.date_range(start=start_date, end=end_date, freq='W-MON')
         return mondays, [d.strftime('%d') for d in mondays]
 
-    def build_gantt_chart(self, draw_dependencies: bool = False, draw_groups: bool = False):
+    def build_gantt_chart(
+        self, 
+        draw_dependencies: bool = False, 
+        draw_groups: bool = False, 
+        max_label_size: int = 50
+    ):
+        """
+        Args:
+            draw_dependencies (bool): Whether to draw dependency arrows between tasks.
+            draw_groups (bool): Whether to color bars based on their group.
+            max_label_size (int): Maximum size of the label next to bars.
+        """
+
 
         week_positions, week_labels = self._build_week_ticks(
             self.tasks_df['start_date'].min(), 
@@ -206,8 +422,8 @@ class GanttChart:
             groups[parent].append(bar_info[task_name])
 
             resources_str = ', '.join(resources) if resources else ''
-            if len(resources_str) > 36:
-                resources_str = resources_str[:33] + '...'
+            if len(resources_str) > max_label_size:
+                resources_str = resources_str[:max_label_size - 3] + '...'
             label = f"{duration}d | €{task.costs}"
             if resources_str:
                 label = label + ' | ' + resources_str
@@ -230,7 +446,7 @@ class GanttChart:
         if draw_groups:
             color_groups = plt.get_cmap('tab20')
             group_color_map = {g: color_groups(i % getattr(color_groups, 'N', 20)) for i, g in enumerate(groups.keys())}
-            group_alpha = 0.2
+            
 
             for group_name, infos in groups.items():
                 ys = [i['y'] for i in infos]
@@ -247,7 +463,7 @@ class GanttChart:
                     xmin=0, 
                     xmax=1, 
                     facecolor=color, 
-                    alpha=group_alpha, 
+                    alpha=self.group_alpha, 
                     zorder=0
                 )
 
@@ -299,7 +515,7 @@ class GanttChart:
                         pred["dependencies_marker"] = curr_pred_count
                         succ["dependencies_marker"] = curr_succ_count
                         
-                        if pred.get("dependencies_marker", 0) is not 0 or succ.get("dependencies_marker", 0) is not 0:
+                        if pred.get("dependencies_marker", 0) > 0 or succ.get("dependencies_marker", 0) > 0:
                             clr_dependencies = plt.get_cmap("hsv")
                             clr_dependencies = clr_dependencies(pred["dependencies_marker"] * 1.0 / 12)
                             pred_x += 0.4 * pred.get("dependencies_marker", 0)
@@ -376,3 +592,5 @@ class GanttChart:
         plt.savefig(self.output_path_dir / 'gantt_chart.svg', format='svg')
         plt.savefig(self.output_path_dir / 'gantt_chart.pdf', format='pdf')
         plt.close()
+
+        return self

@@ -1,0 +1,66 @@
+Fase,Group,Deliverables
+Kick-off & Project Setup,Project Initiation & Analysis,"Kick-off meeting minutes
+Project charter
+Stakeholder register
+Communicatieplan"
+Process & Workflow Analysis,Project Initiation & Analysis,"Procesmeetrapport
+Workflow maps (AS-IS : TO-BE)
+Bottleneck analysis
+Data export voor simulatie"
+Requirements Definition,Project Initiation & Analysis,"Requirements specification (functional & non-
+functional)
+Acceptance criteria checklist
+Interface requirement list (PLC/MES)"
+Risk & Cost Analysis,Project Initiation & Analysis,"Risicoanalyse (RAID log (Risks, Assumptions,
+Issues, Dependencies))
+Kostenraming (CAPEX (Capital Expenditures)/OPEX
+(Operational Expenditures))
+Scenario en gevoeligheidsanalyse rapport"
+System Architecture Design,"Design, Planning & Simulation","Technisch Ontwerpdocument (TDD)
+Component lijst en specificaties
+Netwerk- en integratieontwerp"
+Simulation & Digital Twin,"Design, Planning & Simulation","Digital Twin model
+Simulatie scenarios en rapport
+Validatie cases en resultaten"
+Planning & Scheduling,"Design, Planning & Simulation","Implementatieplan (cutover windows)
+Resource en shift planning
+Fallback- en roll-back procedures"
+Design Review,"Design, Planning & Simulation","Review minutes and decision log
+Approved go/no-go record
+Action item list for prototype build"
+Prototype Build,Prototype Development & Testing,"Werkend prototype in testzone
+Installatie- en configuratierapport
+Hardware en software baselines"
+Testing & Validation,Prototype Development & Testing,"Testplannen en -cases
+Testverslagen en meetresultaten
+Aanbevelingen en defectlog
+Performance testing report (throughput-, latency-,
+uptime- and stress- tests)"
+Operator Training,Prototype Development & Testing,"Training materialen en handleidingen
+Training aanwezigheid en competentiegegevens
+Handover checklist voor operaties
+Training evaluatierapport"
+Integration Preparation,Pilot Line Implementation,"Integratieplan en schema
+Communicatieplan voor cutover
+Rollback- en noodplannen"
+System Integration,Pilot Line Implementation,"Integratie tests
+Integratietest rapporten
+Interface verificatiedocumenten
+Systeemconfiguratie baselines (configuratie van
+PLC, MES, AMR's en IoT-apparaten)"
+Commissioning & Validation,Pilot Line Implementation,"Inbedrijfstellingsrapport
+Operationele acceptatie goedkeuring
+Performantie monitoring data"
+Performance Evaluation,Evaluation & Reporting,"KPI (key performance indicator) meting rapport
+Vergelijking met baseline
+Verbeterpunten en lessons learned document"
+ROI & Feasibility Analysis,Evaluation & Reporting,"ROI berekening en gevoeligheidsanalyse
+Haalbaarheidsrapport
+Aanbeveling voor opschaling"
+Final Reporting & Closure,Evaluation & Reporting,"Eindrapport
+Overdrachtsdocumenten
+Lessons learned en volgende stappen
+Project afsluitingsrapport
+Presentatie voor stuurgroep
+Demonstratie sessie
+HOTO (handover-takeover) documentatie"

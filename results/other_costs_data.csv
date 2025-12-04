@@ -1,0 +1,6 @@
+Category,Subcategory,Item/Model,Unit_Cost_EUR
+Automation_Cost_Estimate,Other_Costs,Software,2000.0
+Automation_Cost_Estimate,Other_Costs,Safety,20000.0
+Automation_Cost_Estimate,Other_Costs,Accessories,10000.0
+Automation_Cost_Estimate,Other_Costs,7th_Axis_per_robot_arm,6500.0
+Automation_Cost_Estimate,Other_Costs,Extras,50000.0

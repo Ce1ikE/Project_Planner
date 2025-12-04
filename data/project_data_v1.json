@@ -3,21 +3,60 @@
         "Allowed fields for each task": [
             "start_date (YYYY-MM-DD)",
             "end_date (YYYY-MM-DD)",
-            "resources (list of people names)",
-            "costs (numeric value)"
+            "resources (list of resource names)",
+            "costs (float, estimated cost in EUR)",
+            "deliverables (list of deliverable names)",
+            "dependencies (list of 'Phase Title:Task Title' strings)",
+            "notes (string)",
+            "detailed_description (string)"
         ]
     },
-    "title": "Stuurloos naar de toekomst v1",
-    "team": [
-        "Alexander",
-        "Ewann",
-        "Antonio",
-        "Jona",
-        "Sander",
-        "Ennis"
+    "title": "Stuurloos naar de toekomst v2.0",
+    "description": [
+        "Project om één representatieve productielijn te digitaliseren en te automatiseren als pilot,",
+        "met inzet van robotica (AMR's), IoT en een Digital Twin voor simulatie en validatie.",
+        "Doel is een stabiele, semi-autonome pilotlijn met meetbare productiviteits- en ROI-verbeteringen."
     ],
-    "description": "Project om één representatieve productielijn te digitaliseren en te automatiseren als pilot, met inzet van robotica (AMR's), IoT en een Digital Twin voor simulatie en validatie. Doel is een stabiele, semi-autonome pilotlijn met meetbare productiviteits- en ROI-verbeteringen.",
-    "detailed_explanation": "Dit project (\"Stuurloos naar de toekomst\") richt zich op het ontwerpen, bouwen en valideren van een semi-autonome pilotproductielijn. Het primaire doel is het demonstreren van productiviteitsverbetering, betrouwbaarheid en terugverdienbaarheid (ROI) door inzet van AMR's, sensornetwerken (IoT), en simulatie via een Digital Twin. De aanpak bestaat uit vijf fasen: initiatie & analyse, ontwerp & simulatie, prototypebouw & tests, gefaseerde integratie in een pilotlijn en evaluatie & rapportage. Elke subtake heeft een geraamde kost, duidelijke acceptatiecriteria en opleveringsdocumenten. De kosten in dit bestand zijn schattingen voor planning en vergelijkingen; gedetailleerde kostencalculaties worden gemaakt tijdens Initiatie en Analyse.",
+    "detailed_explanation": [
+        "Dit project (\"Stuurloos naar de toekomst\")", 
+        "richt zich op het ontwerpen, bouwen en valideren van een semi-autonome pilotproductielijn.", 
+        "Het primaire doel is het demonstreren van productiviteitsverbetering, betrouwbaarheid en terugverdienbaarheid (ROI)", 
+        "door inzet van AMR's, sensornetwerken (IoT), en simulatie via een Digital Twin.",
+        "De aanpak bestaat uit vijf fasen: initiatie & analyse, ontwerp & simulatie, prototypebouw & tests, gefaseerde integratie in een pilotlijn", 
+        "en evaluatie & rapportage. Elke subtake heeft een geraamde kost, duidelijke acceptatiecriteria en opleveringsdocumenten.", 
+        "De kosten in dit bestand zijn schattingen voor planning en vergelijkingen;", 
+        "gedetailleerde kostencalculaties worden gemaakt tijdens Initiatie en Analyse."
+    ],
+    "organogram": {
+        "Koen Ledegen": "Project Sponsor",
+        "Stuurgroep": "Besluitvormend Lichaam",
+        "team" : {
+            "Ennis": "Project Manager & Software Architect",
+            "Alexander": "Technische Adviseur Productieomgeving",
+            "Ewann": "Technische Adviseur Technieken & Automatisering",
+            "Jona": "Technische Adviseur Technieken & Automatisering",
+            "Sander": "Technische Adviseur Technieken & Automatisering",
+            "Antonio": "Project Controller & Cost Engineer"
+        },
+        "eindgebruikers": [
+            "Operatoren Productielijn",
+            "Technische Dienst"
+        ],
+        "externe_partijen": [
+            "Leveranciers van AMR's en Robotica",
+            "Consultants Digital Twin Technologie"
+        ],
+        "overige_stakeholders": [
+            "IT-afdeling (netwerk & security)",
+            "Veiligheidscoördinator"
+        ],
+        "_communicatiekanalen": [
+            "Wekelijkse teamvergaderingen",
+            "Maandelijkse stuurgroep updates",
+            "E-mail en projectmanagementtool voor dagelijkse communicatie",
+            "Documentatie gedeeld via centrale repository (bijv. SharePoint,OneDrive)"
+        ]
+    },
     "project_scope": {
         "in_scope": [
             "Analyse van bestaande productielijnen",
@@ -113,28 +152,50 @@
             "Kick-off & Project Setup": {
                 "start_date": "2024-06-01",
                 "end_date": "2024-06-05",
-                "resources": ["Alexander", "Ennis"],
+                "resources": ["Ennis", "Antonio"],
+                "deliverables": [
+                    "Kick-off meeting minutes",
+                    "Project charter",
+                    "Stakeholder register",
+                    "Communicatieplan"
+                ],
                 "costs": 10000,
                 "detailed_description": "Projectopstart: stakeholder alignment, project governance, communicatieplan, aanstellen stuurgroep en technische leads. Inclusief voorbereidende licenties en aanschaf van eerste tooling/meetapparatuur."
             },
             "Process & Workflow Analysis": {
                 "start_date": "2024-06-06",
                 "end_date": "2024-06-10",
-                "resources": ["Ewann", "Jona"],
+                "resources": ["Ewann", "Jona", "Alexander"],
+                "deliverables": [
+                    "Procesmeetrapport",
+                    "Workflow maps (AS-IS : TO-BE)",
+                    "Bottleneck analysis",
+                    "Data export voor simulatie"
+                ],
                 "costs": 5000,
                 "detailed_description": "Diepgaande analyse van de geselecteerde productielijn, datacollectie van processtappen, tijdmetingen en identificatie van bottlenecks. Levering: analyseverslag met meetdata en aanbevelingen."
             },
             "Requirements Definition": {
                 "start_date": "2024-06-11",
                 "end_date": "2024-06-15",
-                "resources": ["Antonio", "Sander"],
+                "resources": ["Ennis", "Antonio", "Sander"],
+                "deliverables": [
+                    "Requirements specification (functional & non-functional)",
+                    "Acceptance criteria checklist",
+                    "Interface requirement list (PLC/MES)"
+                ],
                 "costs": 8000,
                 "detailed_description": "Opstellen van functionele en niet-functionele requirements: performance targets, veiligheidscriteria, interface-eisen (PLC, MES), dataverzamelingsvereisten en acceptatiecriteria."
             },
             "Risk & Cost Analysis": {
                 "start_date": "2024-06-16",
                 "end_date": "2024-06-20",
-                "resources": ["Ennis"],
+                "resources": ["Antonio", "Ennis"],
+                "deliverables": [
+                    "Risicoanalyse (RAID log (Risks, Assumptions, Issues, Dependencies))",
+                    "Kostenraming (CAPEX (Capital Expenditures)/OPEX (Operational Expenditures))",
+                    "Scenario en gevoeligheidsanalyse rapport"
+                ],
                 "costs": 6000,
                 "detailed_description": "Risico-identificatie (technisch, operationeel, veiligheidsrisico's) en inschatting van investerings- en operationele kosten. Scenarioanalyse en gevoeligheidsanalyse voor ROI-berekeningen."
             }
@@ -143,7 +204,12 @@
             "System Architecture Design": {
                 "start_date": "2024-06-21",
                 "end_date": "2024-06-30",
-                "resources": ["Alexander", "Antonio"],
+                "resources": ["Alexander", "Ewann"],
+                "deliverables": [
+                    "Technisch Ontwerpdocument (TDD)",
+                    "Component lijst en specificaties",
+                    "Netwerk- en integratieontwerp"
+                ],
                 "costs": 12000,
                 "dependencies": ["Project Initiation & Analysis:Requirements Definition"],
                 "notes": "Bevat lay-out van robotica, sensoren en netwerk",
@@ -153,6 +219,11 @@
                 "start_date": "2024-07-01",
                 "end_date": "2024-07-10",
                 "resources": ["Ewann"],
+                "deliverables": [
+                    "Digital Twin model",
+                    "Simulatie scenarios en rapport",
+                    "Validatie cases en resultaten"
+                ],
                 "costs": 10000,
                 "dependencies": ["Design, Planning & Simulation:System Architecture Design"],
                 "notes": "Opzetten Digital Twin en valideer scenario's",
@@ -161,7 +232,12 @@
             "Planning & Scheduling": {
                 "start_date": "2024-06-21",
                 "end_date": "2024-07-05",
-                "resources": ["Jona"],
+                "resources": ["Jona", "Ennis"],
+                "deliverables": [
+                    "Implementatieplan (cutover windows)",
+                    "Resource en shift planning",
+                    "Fallback- en roll-back procedures"
+                ],
                 "costs": 4000,
                 "dependencies": ["Project Initiation & Analysis:Process & Workflow Analysis"],
                 "notes": "Planningsstrategieën om productie-interrupties te vermijden",
@@ -170,7 +246,12 @@
             "Design Review": {
                 "start_date": "2024-07-08",
                 "end_date": "2024-07-10",
-                "resources": ["Stuurgroep"],
+                "resources": ["Stuurgroep", "Ennis"],
+                "deliverables": [
+                    "Review minutes and decision log",
+                    "Approved go/no-go record",
+                    "Action item list for prototype build"
+                ],
                 "costs": 2000,
                 "dependencies": [
                     "Design, Planning & Simulation:System Architecture Design",
@@ -184,7 +265,12 @@
             "Prototype Build": {
                 "start_date": "2024-07-11",
                 "end_date": "2024-07-25",
-                "resources": ["Alexander", "Antonio"],
+                "resources": ["Alexander", "Ewann"],
+                "deliverables": [
+                    "Werkend prototype in testzone",
+                    "Installatie- en configuratierapport",
+                    "Hardware en software baselines"
+                ],
                 "costs": 20000,
                 "dependencies": ["Design, Planning & Simulation:Design Review"],
                 "notes": "Bouwen in testzone; isolatie van live productielijn",
@@ -193,7 +279,13 @@
             "Testing & Validation": {
                 "start_date": "2024-07-26",
                 "end_date": "2024-08-05",
-                "resources": ["Ewann", "Sander"],
+                "resources": ["Sander", "Ewann"],
+                "deliverables": [
+                    "Testplannen en -cases",
+                    "Testverslagen en meetresultaten",
+                    "Aanbevelingen en defectlog",
+                    "Performance testing report (throughput-, latency-, uptime- and stress- tests)"
+                ],
                 "costs": 5000,
                 "dependencies": ["Prototype Development & Testing:Prototype Build"],
                 "notes": "Unit tests, veiligheidsevaluaties en performantie-benchmarks",
@@ -202,7 +294,13 @@
             "Operator Training": {
                 "start_date": "2024-08-01",
                 "end_date": "2024-08-10",
-                "resources": ["Jona"],
+                "resources": ["Jona", "Sander"],
+                "deliverables": [
+                    "Training materialen en handleidingen",
+                    "Training aanwezigheid en competentiegegevens",
+                    "Handover checklist voor operaties",
+                    "Training evaluatierapport"
+                ],
                 "costs": 3000,
                 "dependencies": ["Prototype Development & Testing:Testing & Validation"],
                 "notes": "Trainingssessies en trainingsmateriaal voor eindgebruikers",
@@ -213,7 +311,12 @@
             "Integration Preparation": {
                 "start_date": "2024-08-11",
                 "end_date": "2024-08-14",
-                "resources": ["All"],
+                "resources": ["Ennis", "Alexander", "Ewann", "Jona", "Sander", "Antonio"],
+                "deliverables": [
+                    "Integratieplan en schema",
+                    "Communicatieplan voor cutover",
+                    "Rollback- en noodplannen"
+                ],
                 "costs": 3000,
                 "dependencies": ["Prototype Development & Testing:Testing & Validation"],
                 "notes": "Communicatie, planningen en voorbereidingen voor integratie",
@@ -223,6 +326,12 @@
                 "start_date": "2024-08-15",
                 "end_date": "2024-08-22",
                 "resources": ["Alexander", "Ewann"],
+                "deliverables": [
+                    "Integratie tests",
+                    "Integratietest rapporten",
+                    "Interface verificatiedocumenten",
+                    "Systeemconfiguratie baselines (configuratie van PLC, MES, AMR's en IoT-apparaten)"
+                ],
                 "costs": 15000,
                 "dependencies": ["Pilot Line Implementation:Integration Preparation"],
                 "notes": "Fasegewijze integratie en compatibility tests",
@@ -232,6 +341,11 @@
                 "start_date": "2024-08-23",
                 "end_date": "2024-08-28",
                 "resources": ["Sander", "Ennis"],
+                "deliverables": [
+                    "Inbedrijfstellingsrapport",
+                    "Operationele acceptatie goedkeuring",
+                    "Performantie monitoring data"
+                ],
                 "costs": 5000,
                 "dependencies": ["Pilot Line Implementation:System Integration"],
                 "notes": "Finale validatie en performance monitoring",
@@ -243,6 +357,11 @@
                 "start_date": "2024-08-29",
                 "end_date": "2024-08-31",
                 "resources": ["Jona", "Ewann"],
+                "deliverables": [
+                    "KPI (key performance indicator) meting rapport",
+                    "Vergelijking met baseline",
+                    "Verbeterpunten en lessons learned document"
+                ],
                 "costs": 2000,
                 "dependencies": ["Pilot Line Implementation:Commissioning & Validation"],
                 "notes": "Meet en rapporteer KPI's tegenover baseline",
@@ -251,7 +370,12 @@
             "ROI & Feasibility Analysis": {
                 "start_date": "2024-08-29",
                 "end_date": "2024-08-31",
-                "resources": ["Ennis"],
+                "resources": ["Antonio", "Ennis"],
+                "deliverables": [
+                    "ROI berekening en gevoeligheidsanalyse",
+                    "Haalbaarheidsrapport",
+                    "Aanbeveling voor opschaling"
+                ],
                 "costs": 2000,
                 "dependencies": ["Evaluation & Reporting:Performance Evaluation"],
                 "notes": "Financiële analyse en beslissing voor opschaling",
@@ -260,7 +384,16 @@
             "Final Reporting & Closure": {
                 "start_date": "2024-08-29",
                 "end_date": "2024-08-31",
-                "resources": ["Stuurgroep", "All"],
+                "resources": ["Stuurgroep", "Ennis", "Antonio"],
+                "deliverables": [
+                    "Eindrapport",
+                    "Overdrachtsdocumenten",
+                    "Lessons learned en volgende stappen",
+                    "Project afsluitingsrapport",
+                    "Presentatie voor stuurgroep",
+                    "Demonstratie sessie",
+                    "HOTO (handover-takeover) documentatie"
+                ],
                 "costs": 1500,
                 "dependencies": [
                     "Evaluation & Reporting:Performance Evaluation",

@@ -1,0 +1,23 @@
+DATE_FORMAT = '%Y-%m-%d'
+TITLE_SIZE = 12
+TITLE_FONT_WEIGHT = "bold"
+FONT_COLOR = "#6C6C6C"
+X_LABEL = "Timeline"
+Y_LABEL = "Tasks"
+LABEL_SIZE = 8
+DAY_FONT_SIZE = 8
+DAY_FONT_WEIGHT = "bold"
+DAY_FONT_COLOR = FONT_COLOR
+MONTH_FONT_SIZE = 10
+MONTH_FONT_WEIGHT = "bold"
+MONTH_FONT_COLOR = FONT_COLOR
+DEPENDENCIES_COLOR = "#767170"
+GROUP_ALPHA = 0.2
+FONT_DICT = {
+    "fontfamily": "monospace",
+    "fontsize": 10,
+    "fontweight": "bold",
+    "color": FONT_COLOR,
+}
+
+RANDOM_SEED = 5106
