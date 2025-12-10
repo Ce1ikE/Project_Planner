@@ -1,96 +1,104 @@
 {
-    "_comments": {
-        "Allowed fields for each task": [
-            "start_date (YYYY-MM-DD)",
-            "end_date (YYYY-MM-DD)",
-            "resources (list of resource names)",
-            "costs (float, estimated cost in EUR)",
-            "deliverables (list of deliverable names)",
-            "dependencies (list of 'Phase Title:Task Title' strings)",
-            "notes (string)",
-            "detailed_description (string)"
-        ]
-    },
     "title": "Stuurloos naar de toekomst v2.0",
-    "description": [
-        "Project om één representatieve productielijn te digitaliseren en te automatiseren als pilot,",
-        "met inzet van robotica (AMR's), IoT en een Digital Twin voor simulatie en validatie.",
-        "Doel is een stabiele, semi-autonome pilotlijn met meetbare productiviteits- en ROI-verbeteringen."
-    ],
-    "detailed_explanation": [
-        "Dit project (\"Stuurloos naar de toekomst\")", 
-        "richt zich op het ontwerpen, bouwen en valideren van een semi-autonome pilotproductielijn.", 
-        "Het primaire doel is het demonstreren van productiviteitsverbetering, betrouwbaarheid en terugverdienbaarheid (ROI)", 
-        "door inzet van AMR's, sensornetwerken (IoT), en simulatie via een Digital Twin.",
-        "De aanpak bestaat uit vijf fasen: initiatie & analyse, ontwerp & simulatie, prototypebouw & tests, gefaseerde integratie in een pilotlijn", 
-        "en evaluatie & rapportage. Elke subtake heeft een geraamde kost, duidelijke acceptatiecriteria en opleveringsdocumenten.", 
-        "De kosten in dit bestand zijn schattingen voor planning en vergelijkingen;", 
-        "gedetailleerde kostencalculaties worden gemaakt tijdens Initiatie en Analyse."
-    ],
-    "organogram": {
-        "Koen Ledegen": "Project Sponsor",
-        "Stuurgroep": "Besluitvormend Lichaam",
-        "team" : {
-            "Ennis": "Project Manager & Software Architect",
-            "Alexander": "Technische Adviseur Productieomgeving",
-            "Ewann": "Technische Adviseur Technieken & Automatisering",
-            "Jona": "Technische Adviseur Technieken & Automatisering",
-            "Sander": "Technische Adviseur Technieken & Automatisering",
-            "Antonio": "Project Controller & Cost Engineer"
+    "project_info": {
+        "_description": [
+            "Project om één representatieve productielijn te digitaliseren en te automatiseren als pilot,",
+            "met inzet van robotica (AMR's), IoT en een Digital Twin voor simulatie en validatie.",
+            "Doel is een stabiele, semi-autonome pilotlijn met meetbare productiviteits- en ROI-verbeteringen."
+        ],
+        "detailed_explanation": [
+            "Dit project (\"Stuurloos naar de toekomst\")", 
+            "richt zich op het ontwerpen, bouwen en valideren van een semi-autonome pilotproductielijn.", 
+            "Het primaire doel is het demonstreren van productiviteitsverbetering, betrouwbaarheid en terugverdienbaarheid (ROI)", 
+            "door inzet van AMR's, sensornetwerken (IoT), en simulatie via een Digital Twin.",
+            "De aanpak bestaat uit vijf fasen: initiatie & analyse, ontwerp & simulatie, prototypebouw & tests, gefaseerde integratie in een pilotlijn", 
+            "en evaluatie & rapportage. Elke subtake heeft een geraamde kost, duidelijke acceptatiecriteria en opleveringsdocumenten.", 
+            "De kosten in dit bestand zijn schattingen voor planning en vergelijkingen;", 
+            "gedetailleerde kostencalculaties worden gemaakt tijdens Initiatie en Analyse."
+        ],
+        "project_scope": {
+            "in_scope": [
+                "Analyse van bestaande productielijnen",
+                "Ontwerp van een semi-autonome pilotlijn",
+                "Simulatie met digitale twin technologie",
+                "Integratie van ML/AI, AMR's en IoT-systemen",
+                "Opleiding van operatoren",
+                "Evaluatie en ROI-analyse"
+            ],
+            "out_of_scope": [
+                "Volledige automatisering van alle productielijnen",
+                "Commerciële uitrol naar andere vestigingen buiten de pilot"
+            ]
         },
-        "eindgebruikers": [
-            "Operatoren Productielijn",
-            "Technische Dienst"
+        "deliverables": [
+            "Analyseverslag met goedgekeurde requirements",
+            "Technisch Ontwerpdocument",
+            "Simulatieverslag (Digital Twin resultaten en scenario's)",
+            "Werkend prototype (pilotlijn) in testzone",
+            "Testverslagen - unit tests en benchmark rapporten",
+            "Opleidingsrapport voor eindgebruikers (operatoren)",
+            "Operationele pilotlijn met integratietests",
+            "Overdrachtsdocumentatie en eindrapport met aanbevelingen voor verdere uitrol"
         ],
-        "externe_partijen": [
-            "Leveranciers van AMR's en Robotica",
-            "Consultants Digital Twin Technologie"
+        "acceptance_criteria": [
+            "De pilot functioneert autonoom en stabiel (24/7 beschikbaarheid afhankelijk van afspraken)",
+            "Productiviteit stijgt minimaal 15%-20% ten opzichte van de baseline",
+            "ROI is positief binnen 2 jaar na volledige ingebruikname van de pilot",
+            "Operatoren kunnen vlot met het systeem werken en hebben de benodigde training afgerond"
         ],
-        "overige_stakeholders": [
-            "IT-afdeling (netwerk & security)",
-            "Veiligheidscoördinator"
-        ],
-        "_communicatiekanalen": [
-            "Wekelijkse teamvergaderingen",
-            "Maandelijkse stuurgroep updates",
-            "E-mail en projectmanagementtool voor dagelijkse communicatie",
-            "Documentatie gedeeld via centrale repository (bijv. SharePoint,OneDrive)"
-        ]
+        "stakeholders": {
+            "Stuurgroep": "Besluitvormend Lichaam",
+            "eindgebruikers": [
+                "Operatoren Productielijn",
+                "Technische Dienst"
+            ],
+            "externe_partijen": [
+                "Leveranciers van AMR's en Robotica",
+                "Consultants Digital Twin Technologie"
+            ],
+            "overige_stakeholders": [
+                "IT-afdeling (netwerk & security)",
+                "Veiligheidscoördinator"
+            ],
+            "communicatiekanalen": [
+                "Wekelijkse teamvergaderingen",
+                "Maandelijkse stuurgroep updates",
+                "E-mail en projectmanagementtool voor dagelijkse communicatie",
+                "Documentatie gedeeld via centrale repository (bijv. SharePoint,OneDrive)"
+            ]
+        },
+        "timelines_estimate": {
+            "Kleine KMO": "± 3 maanden",
+            "Middelgrote KMO": "± 6 maanden",
+            "Grote KMO": "± 8-10 maanden"
+        }
     },
-    "project_scope": {
-        "in_scope": [
-            "Analyse van bestaande productielijnen",
-            "Ontwerp van een semi-autonome pilotlijn",
-            "Simulatie met digitale twin technologie",
-            "Integratie van ML/AI, AMR's en IoT-systemen",
-            "Opleiding van operatoren",
-            "Evaluatie en ROI-analyse"
-        ],
-        "out_of_scope": [
-            "Volledige automatisering van alle productielijnen",
-            "Commerciële uitrol naar andere vestigingen buiten de pilot"
-        ]
-    },
-    "deliverables": [
-        "Analyseverslag met goedgekeurde requirements",
-        "Technisch Ontwerpdocument",
-        "Simulatieverslag (Digital Twin resultaten en scenario's)",
-        "Werkend prototype (pilotlijn) in testzone",
-        "Testverslagen - unit tests en benchmark rapporten",
-        "Opleidingsrapport voor eindgebruikers (operatoren)",
-        "Operationele pilotlijn met integratietests",
-        "Overdrachtsdocumentatie en eindrapport met aanbevelingen voor verdere uitrol"
-    ],
-    "acceptance_criteria": [
-        "De pilot functioneert autonoom en stabiel (24/7 beschikbaarheid afhankelijk van afspraken)",
-        "Productiviteit stijgt minimaal 15%-20% ten opzichte van de baseline",
-        "ROI is positief binnen 2 jaar na volledige ingebruikname van de pilot",
-        "Operatoren kunnen vlot met het systeem werken en hebben de benodigde training afgerond"
-    ],
-    "timelines_estimate": {
-        "Kleine KMO": "± 3 maanden",
-        "Middelgrote KMO": "± 6 maanden",
-        "Grote KMO": "± 8-10 maanden"
+    "organogram": {
+        "Koen Ledegen" : {
+            "role": "Project Sponsor",
+            "supervisor_of": {
+                "Antonio" : {
+                    "role": "Project Controller & Cost Engineer, Financial Analyst"
+                },
+                "Ennis": {
+                    "role": "Project Manager , Software Architect & AI Specialist",
+                    "supervisor_of" : {
+                        "Alexander": {
+                            "role": "Technische Adviseur Productieomgeving"
+                        },
+                        "Ewann": {
+                            "role": "Technische Adviseur Technieken & Automatisering"
+                        },
+                        "Jona": {
+                            "role": "Technische Adviseur Technieken & Automatisering"
+                        },
+                        "Sander": {
+                            "role": "Technische Adviseur Technieken & Automatisering"
+                        }
+                    }
+                }
+            }
+        }
     },
     "phases": [
         {
@@ -102,7 +110,7 @@
                 "Definiëren van automatiseringsdoelen met stakeholders",
                 "Opstellen van risico- en kostenanalyse"
             ],
-            "notes": "Betrek operatoren en technische dienst; resultaat = Analyseverslag en goedgekeurde requirements"
+            "_notes": "Betrek operatoren en technische dienst; resultaat = Analyseverslag en goedgekeurde requirements"
         },
         {
             "id": 2,
@@ -112,7 +120,7 @@
                 "Opzetten Digital Twin en 3D-simulaties",
                 "Werkplanning maken om productiecontinuïteit te waarborgen"
             ],
-            "notes": "Doel = Technisch Ontwerpdocument en Simulatieverslag"
+            "_notes": "Doel = Technisch Ontwerpdocument en Simulatieverslag"
         },
         {
             "id": 3,
@@ -123,7 +131,7 @@
                 "Veiligheidsevaluaties en performance benchmarks",
                 "Operatortraining en feedbackcycli"
             ],
-            "notes": "Iteratief met fase 2; oplevering = werkend prototype + testverslagen + opleidingsrapport"
+            "_notes": "Iteratief met fase 2; oplevering = werkend prototype + testverslagen + opleidingsrapport"
         },
         {
             "id": 4,
@@ -133,7 +141,7 @@
                 "Integratie- en systeemtests met bestaande systemen (integration tests)",
                 "Beheer van change management en operationele overdracht"
             ],
-            "notes": "Stuurgroep-go/no-go beslissingen; iteratief proces mogelijk tussen fases 2-4"
+            "_notes": "Stuurgroep-go/no-go beslissingen; iteratief proces mogelijk tussen fases 2-4"
         },
         {
             "id": 5,
@@ -144,7 +152,7 @@
                 "Opstellen van eindrapport en aanbevelingen",
                 "Presentatie aan stuurgroep en formele projectafsluiting"
             ],
-            "notes": "Einddeliverable = eindrapport + overdrachtsdocumentatie"
+            "_notes": "Einddeliverable = eindrapport + overdrachtsdocumentatie"
         }
     ],
     "wbs": {
@@ -212,7 +220,7 @@
                 ],
                 "costs": 12000,
                 "dependencies": ["Project Initiation & Analysis:Requirements Definition"],
-                "notes": "Bevat lay-out van robotica, sensoren en netwerk",
+                "_notes": "Bevat lay-out van robotica, sensoren en netwerk",
                 "detailed_description": "Technisch ontwerp van de pilotlijn: specificatie van AMR's en robots, sensorplaatsing (IoT), netwerktopologie, veiligheidsbarrières en integratiepunten met bestaand MES/PLC. Inclusief componentselectie en kostenraming."
             },
             "Simulation & Digital Twin": {
@@ -226,7 +234,7 @@
                 ],
                 "costs": 10000,
                 "dependencies": ["Design, Planning & Simulation:System Architecture Design"],
-                "notes": "Opzetten Digital Twin en valideer scenario's",
+                "_notes": "Opzetten Digital Twin en valideer scenario's",
                 "detailed_description": "Ontwikkelen van een Digital Twin-model voor simulatie van materiaalstromen, machinebezetting en AMR-bewegingen. Uitvoeren van scenario-tests en performance-simulaties om ontwerpkeuzes te valideren."
             },
             "Planning & Scheduling": {
@@ -240,7 +248,7 @@
                 ],
                 "costs": 4000,
                 "dependencies": ["Project Initiation & Analysis:Process & Workflow Analysis"],
-                "notes": "Planningsstrategieën om productie-interrupties te vermijden",
+                "_notes": "Planningsstrategieën om productie-interrupties te vermijden",
                 "detailed_description": "Werkplanning en implementatiestrategie opstellen om de bestaande productiecontinuïteit te waarborgen tijdens integratie. Includes cutover windows and fallback plans."
             },
             "Design Review": {
@@ -257,7 +265,7 @@
                     "Design, Planning & Simulation:System Architecture Design",
                     "Design, Planning & Simulation:Simulation & Digital Twin"
                 ],
-                "notes": "Formele review en go/no-go voor prototype",
+                "_notes": "Formele review en go/no-go voor prototype",
                 "detailed_description": "Formele technische en veiligheidsreview met stuurgroep en operationele stakeholders. Besluitruimte voor prototypebouw en verdere investeringen."
             }
         },
@@ -273,7 +281,7 @@
                 ],
                 "costs": 20000,
                 "dependencies": ["Design, Planning & Simulation:Design Review"],
-                "notes": "Bouwen in testzone; isolatie van live productielijn",
+                "_notes": "Bouwen in testzone; isolatie van live productielijn",
                 "detailed_description": "Fysieke bouw en configuratie van de pilotinstallatie in een afgesloten testzone. Inclusief integratie van robots, AMR's, sensoren en controllers. Levering van testopstelling en baseline-documentatie."
             },
             "Testing & Validation": {
@@ -288,7 +296,7 @@
                 ],
                 "costs": 5000,
                 "dependencies": ["Prototype Development & Testing:Prototype Build"],
-                "notes": "Unit tests, veiligheidsevaluaties en performantie-benchmarks",
+                "_notes": "Unit tests, veiligheidsevaluaties en performantie-benchmarks",
                 "detailed_description": "Gefaseerde testaanpak: unit tests voor subsystemen, veiligheidsaudits, performantiebenchmarks en regressietests. Resultaten vormen input voor iteraties of go/no-go."
             },
             "Operator Training": {
@@ -303,7 +311,7 @@
                 ],
                 "costs": 3000,
                 "dependencies": ["Prototype Development & Testing:Testing & Validation"],
-                "notes": "Trainingssessies en trainingsmateriaal voor eindgebruikers",
+                "_notes": "Trainingssessies en trainingsmateriaal voor eindgebruikers",
                 "detailed_description": "Opleidingsprogramma voor operatoren en onderhoudspersoneel inclusief handleidingen, hands-on trainingen en competentietoetsen."
             }
         },
@@ -319,7 +327,7 @@
                 ],
                 "costs": 3000,
                 "dependencies": ["Prototype Development & Testing:Testing & Validation"],
-                "notes": "Communicatie, planningen en voorbereidingen voor integratie",
+                "_notes": "Communicatie, planningen en voorbereidingen voor integratie",
                 "detailed_description": "Operationele voorbereidingen: change management, communicatie naar productieteam, detaillering van cutoverprocedures en reservemaatregelen."
             },
             "System Integration": {
@@ -334,7 +342,7 @@
                 ],
                 "costs": 15000,
                 "dependencies": ["Pilot Line Implementation:Integration Preparation"],
-                "notes": "Fasegewijze integratie en compatibility tests",
+                "_notes": "Fasegewijze integratie en compatibility tests",
                 "detailed_description": "Integratie van het prototype met de live lijn: fysieke montage, systeeminterfaces, netwerkconfiguratie en integratietests met bestaande systemen."
             },
             "Commissioning & Validation": {
@@ -348,7 +356,7 @@
                 ],
                 "costs": 5000,
                 "dependencies": ["Pilot Line Implementation:System Integration"],
-                "notes": "Finale validatie en performance monitoring",
+                "_notes": "Finale validatie en performance monitoring",
                 "detailed_description": "Inbedrijfstelling: validatie t.o.v. acceptatiecriteria, performance monitoring en fine-tuning van parameters. Rapportage van meetresultaten en openstaande acties."
             }
         },
@@ -364,7 +372,7 @@
                 ],
                 "costs": 2000,
                 "dependencies": ["Pilot Line Implementation:Commissioning & Validation"],
-                "notes": "Meet en rapporteer KPI's tegenover baseline",
+                "_notes": "Meet en rapporteer KPI's tegenover baseline",
                 "detailed_description": "Analyseer gemeten KPI's (doorvoer, kwaliteit, downtime) en vergelijk met baseline. Identificeer verbeterpunten en documenteer lessons learned."
             },
             "ROI & Feasibility Analysis": {
@@ -378,7 +386,7 @@
                 ],
                 "costs": 2000,
                 "dependencies": ["Evaluation & Reporting:Performance Evaluation"],
-                "notes": "Financiële analyse en beslissing voor opschaling",
+                "_notes": "Financiële analyse en beslissing voor opschaling",
                 "detailed_description": "Gedetailleerde financiële analyse inclusief CAPEX/OPEX-scenario's, terugverdientijd, en gevoeligheidsanalyse voor verschillende opschalingsopties."
             },
             "Final Reporting & Closure": {
@@ -399,7 +407,7 @@
                     "Evaluation & Reporting:Performance Evaluation",
                     "Evaluation & Reporting:ROI & Feasibility Analysis"
                 ],
-                "notes": "Eindrapport, overdracht en projectafsluiting",
+                "_notes": "Eindrapport, overdracht en projectafsluiting",
                 "detailed_description": "Opstellen van het eindrapport, overdrachtsdocumenten voor operations, and aanbevelingen voor opschaling. Formele afsluiting met demonstratie aan de stuurgroep."
             }
         }
